@@ -1,0 +1,93 @@
+<!-- Main -->
+<main>
+    {{#if msg}}
+    <div class="container">
+        <div class="row">
+    <div class=" col-6 alert alert-warning offset-3">
+        {{msg}}
+    </div>
+    </div>
+    </div>
+    {{/if}}
+    <div class="container-fluid">
+        <div class="row">
+            <div class=" col-md-6 offset-3">
+                <div class="card-body">
+                    <h3>
+                        Datos personales
+                    </h3>
+                    <form method="post" action="/objetos/registrarObjeto" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="nombreyapellido">
+                                Nombre y Apellido:
+                            </label>
+                            <input type="text" class="form-control" name="nombreyapellido" id="nombreyapellido"
+                                placeholder="Nombre y Apellido" value="{{nombreyapellido}}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">
+                                Telefono:
+                            </label>
+                            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono"
+                                value="{{telefono}}" />
+                        </div>
+                        <h3>
+                            Datos del objeto
+                        </h3>
+                        <div class="form-group">
+                            <label for="exampleInputFile">
+                            </label>
+                            <label for="exampleDataList" class="form-label">Categoria objeto:</label>
+                            <select id="categoria" class="form-control" name="categoria" placeholder="Categoria"
+                                value="{{categoria}}">
+                                <option value="" selected>Selecciona una opcion</option>
+                                <option value="Accesorios">Accesorios</option>
+                                <option value="Ropa">Ropa</option>
+                                <option value="Otros">Documentos</option>
+                                <option value="Otros">Otros</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="localizacion">
+                                Localizacion:
+                            </label>
+                            <input type="text" class="form-control" name="localizacion" id="localizacion"
+                                placeholder="Localizacion" value="{{localizacion}}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha">
+                                Fecha:
+                            </label>
+                            <input type="date" class="form-control" name="fecha" id="fecha" placeholder="Fecha"
+                                value="{{fecha}}" />
+                        </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control-file" name="file" id="exampleInputFile" accept="image/x-png, image/jpeg" />
+ />
+                        </div>
+                        <button type="submit" class="btn btn-primary" value="{{guardar}}">
+                            Guardar
+                        </button>
+                    </form>
+                    <div class="">
+                        {{#if errores}}
+                        <div class="row">
+                            <div class="col-12">
+                                {{#each errores}}
+                                <p>{{error}}</p>
+                                {{/each}}
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="row">
+                            <div class="col-12">
+                                <p>¡Datos del objeto perdido guardados con exito!</p>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

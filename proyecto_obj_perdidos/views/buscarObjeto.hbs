@@ -1,0 +1,48 @@
+
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class=" col-md-6 offset-3">
+                <div class="card-body">
+                    <form method="post" action="/buscar">
+                        <h3>
+                            Datos del objeto
+                        </h3>
+                        <div class="form-group">
+                            <label for="exampleInputFile">
+                            </label>
+                            <label for="exampleDataList" class="form-label">Categoria objeto:</label>
+                            <select id="categoria" class="form-control" name="categoria">
+                                <option value="" selected>Selecciona una opcion</option>
+                                <option value="Accesorios">Accesorios</option>
+                                <option value="Ropa">Ropa</option>
+                                <option value="Otros">Documentos</option>
+                                <option value="Otros">Otros</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Buscar
+                        </button>
+                        <div class="container" class="card alert" role="alert">
+                            <div class="row">
+                                {{#each objetosPerdidos}}
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <img src="{{file}}" style="width:100%">
+                                        </div>
+                                        <div class="col-8">
+                                            <div>{{categoria}}</div>
+                                            <div>{{fecha}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

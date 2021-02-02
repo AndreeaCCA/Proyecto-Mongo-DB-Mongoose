@@ -1,0 +1,35 @@
+<!-- Main  -->
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-6 offset-3">
+        <h3 style="color: white;">
+          Buscar objeto por categoria:
+        </h3>
+        <form action="/objetos/categoria" method="post">
+          <div class="form-group">
+            <label for="exampleInputFile">
+            </label>
+            <select id="categoria" class="form-control" name="categoria" placeholder="Categoria" value="{{categoria}}">
+              <option value="" selected>Selecciona una opcion</option>
+              <option value="Accesorios">Accesorios</option>
+              <option value="Ropa">Ropa</option>
+              <option value="Documentos">Documentos</option>
+              <option value="Otros">Otros</option>
+            </select>
+            <br>
+            <div style="text-align: center;">
+              <input type="submit" class="btn btn-primary" value="Buscar" />
+            </div>
+          </div>
+        </form>
+        {{#each objetosPerdidos}}
+        <div class="alert alert-warning">
+          <img src="{{file}}" style="width:50px">
+          {{categoria}}
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</main>

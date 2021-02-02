@@ -1,11 +1,12 @@
 const express = require('express')
 const app = express()
 const rtMain = require('./routes/rtMain')
+const rtUsers = require('./routes/rtUsers')
+const rtObjetos = require('./routes/rtObjetos')
 var exphbs  = require('express-handlebars')
 var db  = require('./coneciones')
 const fileUpload = require('express-fileupload')
-const rtUsers = require('./routes/rtUsers')
-const rtObjetos = require('./routes/rtUsers')
+
 
 //configuración del motor de plantillas handlebars
 app.engine('.hbs', exphbs({

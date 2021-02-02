@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,400;1,700&family=Mulish:wght@300&display=swap");
+h1 {
+  font-family: 'Merriweather', serif;
+}
+
+body {
+  background: url("../images/1.jpg") top center;
+  background-size: cover;
+  background-position: center center;
+  font-family: 'Mulish', sans-serif;
+}
+
+.card {
+  z-index: 100;
+  border-radius: blur(8px);
+  display: flex;
+  /*   justify-content: space-around !important; */
+  margin-top: 16em;
+  text-align: center;
+  background: unset;
+}
+
+.card-body {
+  background-color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+}
+
+.btn {
+  background-color: #2C618D !important;
+  color: #eac88b !important;
+}
+
+.container {
+  margin: auto;
+  max-width: 800px;
+  display: space-between;
+}
+
+/* 
+
+body{
+    background-color: #fff;
+}
+
+header {
+    position: fixed;
+    top:0px;
+    left:0px;
+    width: 100%;
+    z-index: 9999;
+    nav{
+        background-color: #000;
+        border-bottom:5px solid #F3D94E;
+    }    
+    a,a:hover{
+        color:#F3D94E;
+        margin-left:10px;
+    }
+}
+
+main{
+    margin-top:80px;
+    .container{
+        background: #fff;
+        min-height: 500px;
+        .row{
+            background: rgb(223, 223, 223);
+            min-height: 16px;
+            div[class^='col-']{
+                min-height: 100px;
+                border: 1px dashed #000;
+            }
+            .cuadro{
+                width:100px;
+                height: 100px;
+            }
+        }
+
+    }
+}
+
+.red{
+    background: red;
+}
+.blue{
+    background: blue;
+}
+.green{
+    background: green;
+}
+.yellow{
+    background: yellow;
+}
+
+.oscuro {
+    filter: brightness(50%);
+} */

@@ -1,0 +1,37 @@
+<!-- Main -->
+<main>
+
+      {{#if msg}}
+    <div class="container">
+        <div class="row">
+    <div class=" col-6 alert alert-warning offset-3">
+        {{msg}}
+    </div>
+    </div>
+    </div>
+    {{/if}}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        
+                        <h5 class="card-title" style="text-align: center;">Registro objetos perdidos</h5>
+                        <p class="card-text">¿Quieres registrar un objeto perdido?</p>
+                        <a class="btn btn-primary" href="/objetos/registrarObjeto">Registro objetos</a>
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: center;">Busqueda objetos perdidos</h5>
+                        <p class="card-text">¿Has perdido un objeto?</p>
+                        <a class="btn btn-primary" method="get" href="/objetos/buscarObjeto">Consulta nuestra lista</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
