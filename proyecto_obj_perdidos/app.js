@@ -6,7 +6,7 @@ const rtObjetos = require('./routes/rtObjetos')
 var exphbs  = require('express-handlebars')
 var db  = require('./coneciones')
 const fileUpload = require('express-fileupload')
-
+var session = require('express-session')
 
 //configuración del motor de plantillas handlebars
 app.engine('.hbs', exphbs({
@@ -18,6 +18,31 @@ app.set('view engine', '.hbs')
 app.use(express.static(__dirname + '/public'))
 app.use(express.urlencoded({extended:true}))  
 app.use(fileUpload())
+app.use(session({
+    secret: 'keyboard cat',    //antes  secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+  }))
+
+  let rutasPrivadas=[
+'/objetos/registrarObjeto',
+'/objetos/buscarObjeto',
+/* '/objetos/listado' */
+'/home',
+  ]
+
+  app.use((req,res,next)=>{
+      if(req.session.autentificado){
+          res.locals.sessions =req.session
+          next()
+    }else{
+        if(rutasPrivadas.indexOf(req.url)!=-1){
+            res.render('acceso-denegado')
+        }else next()
+    }
+  })
+
 
 
 //enrutador principal

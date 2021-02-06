@@ -7,7 +7,7 @@ const schema = new Schema({
     categoria:{type:String, required:true},
     localizacion:{type:String, required:true},
     fecha:{type:String, required:true},
-    file:{type:String,default:'/images/default.png'}
+    file:{type:String,default:'/images/3.jpg'}
 })
 
 

@@ -21,7 +21,7 @@ mailer.send = async function send(destinatario) {
             to: destinatario, // list of receivers
             subject: "Registro usuario nuevo", // Subject line
             text: "Estos son sus datos", // plain text body
-            html: "<h1>Hello</h1>"
+            html: "<h1>Hello,¡ ya estas registrado!</h1>"
           })
   //  )
   console.log(info)

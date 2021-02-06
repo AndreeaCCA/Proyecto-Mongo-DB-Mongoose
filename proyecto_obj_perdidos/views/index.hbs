@@ -2,62 +2,85 @@
 
 <main>
 
- {{!-- Nuevo usuario --}}
+    {{!-- Nuevo usuario --}}
+
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
-                <form method="post" action="/usuarios/registrar">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">
-                            Nombre y Apellido
-                        </label>
-                        <input type="text" class="form-control" id="text" placeholder="Nombre y Apellido"
-                            name="nombreyapellido" />
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">
-                            Email address
-                        </label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"
-                            name="email" />
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">
-                            Password
-                        </label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Pasword"
-                            name="password" />
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        Registrar
-                    </button>
-                </form>
 
-                <div class=" card alert" role="alert">
-                    {{{msg}}}
+            <div class=" col-md-4 offset-2">
+                <div class="card-body">
+                    <p style="color: white">Sign up</p>
+                    {{#if msg}}
+                    <div class="alert alert-warning" role="alert">
+                        {{{msg}}}
+                    </div>
+                    {{/if}}
+                    <form method="post" action="/usuarios/registrar">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" />
+                                Nombre y Apellido
+                            </label>
+                            <input type="text" class="form-control" id="text" placeholder="Nombre y Apellido"
+                                name="nombreyapellido" value="{{nombreyapellido}}" {{!-- required --}} />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">
+                                Email address
+                            </label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"
+                                name="email" value="{{email}}" {{!-- required --}}/>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">
+                                Password
+                            </label>
+                            <input type="password" style="display:none"> {{!-- sobrescribir reglas firefox --}}
+                            <input type="password" autocomplete="off" class="form-control" id="exampleInputPassword1"
+                                placeholder="Password" name="password" {{!-- required --}}/>
+                        </div>
+                       {{!--  {{#if errEmail}}
+                    <div class="alert alert-warning" role="alert">
+                        {{{errEmail}}}
+                    </div>
+                    {{/if}} --}}
+                        <button type="submit" class="btn btn-primary">
+                            Registrar
+                        </button>
+                    </form>
+
                 </div>
             </div>
- {{!-- Usuario existente --}}
-            <div class="col-md-6">
-                <form method="post" action="/usuarios/acceder">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">
-                            Email address
-                        </label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"
-                            name="email" />
+            {{!-- Usuario existente --}}
+
+            <div class="col-md-4">
+                <div class="card-body">
+                    <p style="color: white;">Sign in</p>
+                    {{#if msg1}}
+                    <div class="alert alert-warning" role="alert">
+                        {{{msg1}}}
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">
-                            Password
-                        </label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Pasword"
-                            name="password" />
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        Entrar
-                    </button>
-                </form>
+                    {{/if}}
+                    <form method="post" action="/usuarios/acceder">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">
+                                Email address
+                            </label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"
+                                name="email" value="{{body.email}}" {{!-- required --}} />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">
+                                Password
+                            </label>
+                            <input type="password" style="display:none"> {{!-- sobrescribir reglas firefox --}}
+                            <input type="password" autocomplete="off" class="form-control" id="exampleInputPassword1"
+                                placeholder="Password" name="password" {{!-- required --}}/>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Entrar
+                        </button>
+                    </form>
+                </div>
                 <div class=" card alert" role="alert">
                     {{{msg}}}
                 </div>

@@ -1,12 +1,18 @@
 const mongoose = require("mongoose")
 const {Schema} = mongoose
+const beautifyUnique = require('mongoose-beautiful-unique-validation')
 
 const bcrypt = require('bcrypt')
 
 const schemaUsuario = new Schema({
     nombreyapellido: {type:String},
-    email: {type:String, required:true, index: { unique: true } },
-    password:{type:String, required:true}
+    email: {type:String,
+         required:[true, 'El email es obligatorio'], 
+         index: true, 
+         unique: 'Existe una cuenta creada con el mismo correo electronico ({body.email})',
+         lowercase: true},
+    password:{type:String, required:[true, 'El password es obligatorio']},
+    activo:{type:Boolean, default: false}
 })
 
 //esta función "captura" el método save() y ejecuta primero
@@ -22,20 +28,28 @@ schemaUsuario.pre('save', function(next) {               //metodo pre es decir a
 
 class Usuario{
     //get y set
-    get errores(){
+    set emailMal(pepe){
+        this.email=pepe.toLowerCase()
+    }
+
+ /*   get errores(){
         let errores=[]
         if(this.email=="") errores.push({error:"email vacío, es obligatorio."})
         if(this.password=="") errores.push({error:"password vacío, es obligatorio"})
         //validamos el email
 
-        return errores
-    }
+        return errores 
+    }*/
+
+
     //privados
     comprobarPwd(password){
-        return bcrypt.compare(password, this.password)
+        return bcrypt.compare(password, this.password)  //password es el passsword que introduce el usuario y el this.password es el rellena cuando accede de nuevo
             .then(res=>{return res})
     }
 }
 
+//plugin
+schemaUsuario.plugin(beautifyUnique)
 schemaUsuario.loadClass(Usuario)
-module.exports=mongoose.model('usuario',schemaUsuario)
+module.exports=mongoose.model('usuarios',schemaUsuario)
